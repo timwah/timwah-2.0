@@ -1,9 +1,17 @@
----
-layout: default
----
-<h1>{{ page.title }}</h1>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>And Now Jekyll</title>
+  <script type="text/javascript" charset="utf-8">
 
-{{ content }}
+  </script>
+</head>
+<body>
+  <h1>And Now Jekyll</h1>
+
+<p>I&#8217;ve switched my blogging engine yet again. This time, hopefully, for keeps. I decided to go with the super simple, static site generator, Jekyll.</p>
 
 <script type="text/javascript" charset="utf-8">
     if (window.location.search.indexOf('localhost') != -1 ||
@@ -11,9 +19,7 @@ layout: default
     {
       var disqus_developer = 1;
     }
-    {% if page.disqus_url != null %}
-      var disqus_url = "{{ page.disqus_url }}";
-    {% endif %}
+    
 </script>
 
 <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/timwah/embed.js"></script><noscript><a href="http://disqus.com/forums/timwah/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
@@ -32,3 +38,5 @@ layout: default
 })();
 //]]>
 </script>
+</body>
+</html>

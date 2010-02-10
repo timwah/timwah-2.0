@@ -1,3 +1,9 @@
+---
+layout: post
+title: Smart Buffering For Progressive Video
+disqus_url: http://timrobles.com/blog/entry/smart_buffering_for_progressive_video/
+---
+
 The easiest way to serve flash video is to progressively download a FLV. Deploy the FLV just like any other file without the need of a media server, but you don't get the added benefit of seek ahead and video quality adjustment based on download speed. It's the developer's responsibility to ensure that the best possible video experience is created even though a fancy video server isn't available-- usually due to timing and cost. By default, the bufferTime of the NetStream class is 0.1 seconds, prompting us to choose a sufficient buffer time. Here, I present a general strategy for calculating an appropriate buffer time to optimize the progressive download for the user. An ideal video experience might have the following qualities:
 
     * No stoppage in playback (the buffer never becomes empty)

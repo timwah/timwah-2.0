@@ -5,7 +5,13 @@ title: Timwah 2.0
 <div class="hello world!">
   <ul class="posts">
     {% for post in site.posts %}
-      <li>{{ post.title }}</li>
+      {% if post == site.posts.first %}
+        {{ post.title }}
+        {{ post.content | truncatewords: 10 }} 
+        <a href="{{ post.url }}">More...</a>
+      {% else %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endif %}
     {% endfor %}
   </ul>
 </div>

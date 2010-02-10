@@ -1,0 +1,6 @@
+---
+layout: post
+title: And Now Jekyll
+---
+
+I've switched my blogging engine yet again. This time, hopefully, for keeps. I decided to go with the super simple, static site generator, Jekyll.

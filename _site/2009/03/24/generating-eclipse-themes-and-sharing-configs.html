@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Generating Eclipse Themes and Sharing Configs</title>
+  <script type="text/javascript" charset="utf-8">
+
+  </script>
+</head>
+<body>
+  <h1>Generating Eclipse Themes and Sharing Configs</h1>
+
+<p>Here’s a quick post on how to generate themes for Eclipse that you can share across your development machines (home and work for me). It goes back to the age old dilemma of having a consistent <span class="caps">IDE</span> across platforms. Purists might use <span class="caps">VIM</span> since it’s everywhere, or Eclipse since it’s still decently cross platform. In any case you’d want to save common settings that you like in a .vimrc file, templates <span class="caps">XML</span> or color schemes (all your dot files). You can see my configs on Github. Creating an Eclipse them is really just exporting a preference file that only has color specific information in it.</p>
+1. Export your Eclipse preferences using File &gt; Export &gt; General &gt; Preferences. This will output a .epf file with a whole bunch of preferences including repository info; way more than you need.
+2. Run a simple &#8220;cat my_prefs.epf | grep -i color &gt; my_color_prefs.epf&#8221; command to create a preference file that contains color information only.
+3. Add &#8220;file_export_version=3.0&#8221; as the top line of your new epf file. This allows the file to imported into Eclipse &gt;= 3.0. Without this your preferences will not be imported.
+<p>That&#8217;s it! You should be on your way to happy and comfortable coding where ever you are. Be sure to check out Joe Ferris&#8217; Github for more examples of dot file configs. Thanks to WJ Warren and Stack Overflow for pointing me in the right direction.</p>
+
+<script type="text/javascript" charset="utf-8">
+    if (window.location.search.indexOf('localhost') != -1 ||
+        window.location.search.indexOf('file') != -1)
+    {
+      var disqus_developer = 1;
+    }
+    
+      var disqus_url = "http://timrobles.com/blog/entry/generating_eclipse_themes_and_sharing_environments/";
+    
+</script>
+
+<div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/timwah/embed.js"></script><noscript><a href="http://disqus.com/forums/timwah/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+	if(links[i].href.indexOf('#disqus_thread') >= 0) {
+		query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+	}
+	}
+	document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/timwah/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]>
+</script>
+</body>
+</html>
