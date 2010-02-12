@@ -4,18 +4,19 @@
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
   <title>Generating Eclipse Themes and Sharing Configs</title>
-  <script type="text/javascript" charset="utf-8">
-
-  </script>
-</head>
+  <link rel="stylesheet" href="/css/timwah_main.css" type="text/css" media="screen" charset="utf-8">  
+  <script type="text/javascript" src="http://use.typekit.com/rye8uvw.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script></head>
 <body>
   <h1>Generating Eclipse Themes and Sharing Configs</h1>
 
+<div class="post-content">
 <p>Here’s a quick post on how to generate themes for Eclipse that you can share across your development machines (home and work for me). It goes back to the age old dilemma of having a consistent <span class="caps">IDE</span> across platforms. Purists might use <span class="caps">VIM</span> since it’s everywhere, or Eclipse since it’s still decently cross platform. In any case you’d want to save common settings that you like in a .vimrc file, templates <span class="caps">XML</span> or color schemes (all your dot files). You can see my configs on Github. Creating an Eclipse them is really just exporting a preference file that only has color specific information in it.</p>
 1. Export your Eclipse preferences using File &gt; Export &gt; General &gt; Preferences. This will output a .epf file with a whole bunch of preferences including repository info; way more than you need.
 2. Run a simple &#8220;cat my_prefs.epf | grep -i color &gt; my_color_prefs.epf&#8221; command to create a preference file that contains color information only.
 3. Add &#8220;file_export_version=3.0&#8221; as the top line of your new epf file. This allows the file to imported into Eclipse &gt;= 3.0. Without this your preferences will not be imported.
 <p>That&#8217;s it! You should be on your way to happy and comfortable coding where ever you are. Be sure to check out Joe Ferris&#8217; Github for more examples of dot file configs. Thanks to WJ Warren and Stack Overflow for pointing me in the right direction.</p>
+</div>
 
 <script type="text/javascript" charset="utf-8">
     if (window.location.search.indexOf('localhost') != -1 ||
