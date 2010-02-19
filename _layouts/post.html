@@ -1,24 +1,26 @@
 ---
 layout: default
 ---
-<h1>{{ page.title }}</h1>
+<div class="post-container">
+  <span class="post-title">{{ page.title }}</span> <span class="post-date">/ {{ page.date | date: "%Y %b %d" }}</span>
+  <div class="post-content">
+    {{ content }}
+  </div>
 
-<div class="post-content">
-{{ content }}
+  <script type="text/javascript" charset="utf-8">
+      if (window.location.href.indexOf('localhost') != -1 ||
+          window.location.href.indexOf('file') != -1)
+      {
+        var disqus_developer = 1;
+      }
+      {% if page.disqus_url != null %}
+        var disqus_url = "{{ page.disqus_url }}";
+      {% endif %}
+  </script>
+
+  <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/timwah/embed.js"></script><noscript><a href="http://disqus.com/forums/timwah/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+  
 </div>
-
-<script type="text/javascript" charset="utf-8">
-    if (window.location.search.indexOf('localhost') != -1 ||
-        window.location.search.indexOf('file') != -1)
-    {
-      var disqus_developer = 1;
-    }
-    {% if page.disqus_url != null %}
-      var disqus_url = "{{ page.disqus_url }}";
-    {% endif %}
-</script>
-
-<div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/timwah/embed.js"></script><noscript><a href="http://disqus.com/forums/timwah/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 
 <script type="text/javascript">
 //<![CDATA[

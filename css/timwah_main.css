@@ -1,4 +1,33 @@
-.post-content {
+body {
+    margin: 0px;
+    padding: 0px;
     font-size: 14px;
-    font-family: "tilden-sans-light-1", "tilden-sans-light-2";
+    font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2";
+    width: 800px;
+}
+
+h2 {
+    font-weight: 400;
+    font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2";
+}
+
+.post-container {
+    margin: 30px 50px;
+}
+
+.post-content {
+    line-height: 30px;
+}
+
+.post-title {
+    font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2";
+    font-weight: 400;
+    font-size: 32px;
+}
+
+.post-date {
+    font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2";
+    font-weight: 400;
+    font-size: 28px;
+    color: #DDDDDD;
 }
