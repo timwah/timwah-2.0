@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>And Now Jekyll | Timwah 2.0</title>
+    <title>A New Look | Timwah 2.0</title>
     <link rel="stylesheet" href="/css/timwah_main.css" type="text/css" media="screen" charset="utf-8">  
     <link rel="stylesheet" href="/css/pygments_style.css" type="text/css" media="screen" charset="utf-8">
     <script type="text/javascript" src="http://use.typekit.com/rye8uvw.js"></script>
@@ -13,11 +13,22 @@
   <div id="main-container">
     
     <div id="main-content">
-          <span class="post-title">And Now Jekyll</span> <span class="post-date">/ 2010 Feb 10</span>
+          <span class="post-title">A New Look</span> <span class="post-date">/ 2008 Oct 13</span>
   <div class="post-content">
-    <p>I've switched my blogging engine yet again. This time, hopefully, for keeps. I decided to go with the super simple, static site generator, Jekyll. I'm pretty happy with way it turned out. Even though it was pretty cool that the previous layout was generating it's own color scheme, this one is much cleaner in my opinion.</p>
+    <p>And here's the new look. It's obviously not complete yet, but I just wanted to get something up to replace the standard template and to have something to call my own. There are still a few kinks to work out to get it to validate, but it does boast some nifty features.</p>
 
-<p>I hope this new blog layout and 'coding like a hacker' will encourage me to write more posts.</p>
+<p>The color template for this page is generated using <span class="autolink">Adobe Kuler</span>. I randomly select a word out of the set ["zen", "ocean", "mist", "pea", "grasshopper", "kiwi"], then organize the colors from lightest to darkest so I can assign them dynamically to different CSS classes defined like ["lightest", "light", "mid", "dark", "darkest"]. If the colors are hideous or unreadble, just reload the page. I'm working on some color normalizations that will increase the contrast between the colors if the difference is below a certain threshold, ie, text on a colored background becoming unreadable.</p>
+
+<p>Another cool feature is auto-linking. Since I'm a programmer, I'm naturally lazy by trade, and I don't want to find the URL of whatever I want to link to since Google can do it better. So instead of finding the Wikipedia article to "Test driven development", I can just say something like this:</p>
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;autolink&quot;</span><span class="nt">&gt;</span>Test driven development<span class="nt">&lt;/span&gt;</span>
+</code></pre>
+</div>
+
+
+<p>This will trigger some javascript to automatically grab the first result from Google and then link it within my page. I'm planning on adding some additional features to inject additional kewords w/o effecting the link label, i.e., adding the word "wiki" to the end of the query w/o the resulting link having "wiki" in the label.</p>
+
+<p>If you follow the development of this blog, I'll be posting the source as I go along-- but for the eager I'd just sniff the traffic to check out any of my JS files :).</p>
 
   </div>
   
@@ -25,11 +36,11 @@
       <h2>Related Posts</h2>
       <ul class="posts">
         
+            <li><a href="/2010/02/10/and-now-jekyll.html">And Now Jekyll</a> <span class="post-list-date">/ 2010 Feb 10</span></li>
+        
             <li><a href="/2009/10/09/smart-buffering-for-progressive-video.html">Smart Buffering For Progressive Video</a> <span class="post-list-date">/ 2009 Oct 09</span></li>
         
             <li><a href="/2009/03/24/generating-eclipse-themes-and-sharing-configs.html">Generating Eclipse Themes and Sharing Configs</a> <span class="post-list-date">/ 2009 Mar 24</span></li>
-        
-            <li><a href="/2009/01/27/asynchronous-unit-testing-with-flex-unit-and-pure-mvc.html">Asynchronous Unit Testing with Flex Unit and Pure MVC</a> <span class="post-list-date">/ 2009 Jan 27</span></li>
         
       </ul>
     </div>

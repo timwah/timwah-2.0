@@ -1,18 +1,19 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
   "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-  <title>Generating Eclipse Themes and Sharing Configs
-            |
-          Timwah 2.0</title>
-  <link rel="stylesheet" href="/css/timwah_main.css" type="text/css" media="screen" charset="utf-8">  
-  <link rel="stylesheet" href="/css/pygments_style.css" type="text/css" media="screen" charset="utf-8">
-  <script type="text/javascript" src="http://use.typekit.com/rye8uvw.js"></script>
-  <script type="text/javascript">try{Typekit.load();}catch(e){}</script></head>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Generating Eclipse Themes and Sharing Configs | Timwah 2.0</title>
+    <link rel="stylesheet" href="/css/timwah_main.css" type="text/css" media="screen" charset="utf-8">  
+    <link rel="stylesheet" href="/css/pygments_style.css" type="text/css" media="screen" charset="utf-8">
+    <script type="text/javascript" src="http://use.typekit.com/rye8uvw.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  </head>
 <body>
-  <div class="post-container">
-  <span class="post-title">Generating Eclipse Themes and Sharing Configs</span> <span class="post-date">/ 2009 Mar 24</span>
+  <div id="main-container">
+    
+    <div id="main-content">
+          <span class="post-title">Generating Eclipse Themes and Sharing Configs</span> <span class="post-date">/ 2009 Mar 24</span>
   <div class="post-content">
     <p>Here's a quick post on how to generate themes for Eclipse that you can share across your development machines (home and work for me). It goes back to the age old dilemma of having a consistent IDE across platforms. Purists might use VIM since it's everywhere, or Eclipse since it's still decently cross platform. In any case you'd want to save common settings that you like in a .vimrc file, templates XML or color schemes (all your dot files). You can see my configs on <a href="http://github.com/roblocop/trdotcom/tree/master/lib/prefs">Github</a>. Creating an Eclipse them is really just exporting a preference file that only has color specific information in it.
 1. Export your Eclipse preferences using File > Export > General > Preferences. This will output a .epf file with a whole bunch of preferences including repository info; way more than you need.
@@ -22,35 +23,79 @@
 <p>That's it! You should be on your way to happy and comfortable coding where ever you are. Be sure to check out <a href="http://github.com/jferris/config_files/tree/master">Joe Ferris' Github</a> for more examples of dot file configs. Thanks to <a href="http://blog.ansuz.nl/index.php/2009/01/26/howto-create-a-color-scheme-for-fdt/">WJ Warren</a> and <a href="http://stackoverflow.com/questions/481035/is-there-a-simple-consistent-way-to-change-the-color-scheme-of-eclipse-editors">Stack Overflow</a> for pointing me in the right direction.</p>
 
   </div>
-
-  <script type="text/javascript" charset="utf-8">
-      if (window.location.href.indexOf('localhost') != -1 ||
-          window.location.href.indexOf('file') != -1)
-      {
-        var disqus_developer = 1;
-      }
-      
-        var disqus_url = "http://timrobles.com/blog/entry/generating_eclipse_themes_and_sharing_environments/";
-      
-  </script>
-
-  <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/timwah/embed.js"></script><noscript><a href="http://disqus.com/forums/timwah/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
   
-</div>
+  <div id="related">
+      <h2>Related Posts</h2>
+      <ul class="posts">
+        
+            <li><a href="/2010/02/10/and-now-jekyll.html">And Now Jekyll</a> <span class="post-list-date">/ 2010 Feb 10</span></li>
+        
+            <li><a href="/2009/10/09/smart-buffering-for-progressive-video.html">Smart Buffering For Progressive Video</a> <span class="post-list-date">/ 2009 Oct 09</span></li>
+        
+            <li><a href="/2009/01/27/asynchronous-unit-testing-with-flex-unit-and-pure-mvc.html">Asynchronous Unit Testing with Flex Unit and Pure MVC</a> <span class="post-list-date">/ 2009 Jan 27</span></li>
+        
+      </ul>
+    </div>
 
-<script type="text/javascript">
-//<![CDATA[
-(function() {
-	var links = document.getElementsByTagName('a');
-	var query = '?';
-	for(var i = 0; i < links.length; i++) {
-	if(links[i].href.indexOf('#disqus_thread') >= 0) {
-		query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-	}
-	}
-	document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/timwah/get_num_replies.js' + query + '"></' + 'script>');
-})();
-//]]>
-</script>
+    <script type="text/javascript" charset="utf-8">
+        if (window.location.href.indexOf('localhost') != -1 ||
+            window.location.href.indexOf('file') != -1)
+        {
+          var disqus_developer = 1;
+        }
+        
+          var disqus_url = "http://timrobles.com/blog/entry/generating_eclipse_themes_and_sharing_environments/";
+        
+    </script>
+
+    <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/timwah/embed.js"></script><noscript><a href="http://disqus.com/forums/timwah/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+  <script type="text/javascript">
+  //<![CDATA[
+  (function() {
+   var links = document.getElementsByTagName('a');
+   var query = '?';
+   for(var i = 0; i < links.length; i++) {
+   if(links[i].href.indexOf('#disqus_thread') >= 0) {
+     query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+   }
+   }
+   document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/timwah/get_num_replies.js' + query + '"></' + 'script>');
+  })();
+  //]]>
+  </script>
+      <div id="ad-container">
+        <script type="text/javascript"><!--
+        google_ad_client = "pub-0544704656740409";
+        /* ee blog */
+        google_ad_slot = "3105365837";
+        google_ad_width = 900;
+        google_ad_height = 15;
+        //-->
+        </script>
+        <script type="text/javascript"
+        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+      </div>
+    </div>
+    
+    <div id="main-sidebar">
+      <h2><a href="/index.html">Timwah 2.0</a></h2>
+      <ul id="sidebar-menu">
+        <li><a href="/about.html">About</a></li>
+        <li><a href="http://github.com/roblocop/">Github</a></li>
+        <li><a href="http://www.linkedin.com/in/timrobles">LinkedIn</a></li>
+      </ul>
+      <h2>Friends</h2>      
+      <ul id="sidebar-menu">
+        <li><a href="http://anttikupila.com">Antti Kupila</a></li>
+        <li><a href="http://petercole.com">Peter Cole</a></li>
+        <li><a href="http://bigevilempire.com">Ronnie Liew</a></li>        
+        <li><a href="http://toreholmberg.se">Tore Holmberg</a></li>
+      </ul>
+    </div>
+    
+  </div>
 </body>
 </html>

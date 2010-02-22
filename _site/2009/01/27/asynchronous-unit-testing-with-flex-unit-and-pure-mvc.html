@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Asynchronous Unit Testing with Flex Unit and Pure MVC | Timwah 2.0</title>
+    <link rel="stylesheet" href="/css/timwah_main.css" type="text/css" media="screen" charset="utf-8">  
+    <link rel="stylesheet" href="/css/pygments_style.css" type="text/css" media="screen" charset="utf-8">
+    <script type="text/javascript" src="http://use.typekit.com/rye8uvw.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  </head>
+<body>
+  <div id="main-container">
+    
+    <div id="main-content">
+          <span class="post-title">Asynchronous Unit Testing with Flex Unit and Pure MVC</span> <span class="post-date">/ 2009 Jan 27</span>
+  <div class="post-content">
+    <p>Testing asynchronous functions using <a href="http://opensource.adobe.com/wiki/display/flexunit/">Flex Unit</a> is pretty straightforward using the addAsync method of TestCase.</p>
+
+<div class="highlight"><pre><code class="actionscript"><span class="k">var</span> <span class="nx">urlLoader</span><span class="o">:</span><span class="nb">URLLoader</span>  <span class="o">=</span> <span class="k">new</span> <span class="nb">URLLoader</span><span class="p">();</span>
+<span class="nx">urlLoader</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="nb">Event</span><span class="p">.</span><span class="nx">COMPLETE</span><span class="o">,</span> <span class="nx">addAsync</span><span class="p">(</span><span class="nx">completeHandler</span><span class="o">,</span> <span class="mi">5000</span><span class="p">));</span>
+<span class="nx">urlLoader</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="k">new</span> <span class="nb">URLRequest</span><span class="p">(</span><span class="s2">&quot;http://timrobles.com&quot;</span><span class="p">));</span>
+</code></pre>
+</div>
+
+
+<p>But in the case of testing with <span class="autolink">Pure MVC</span>, you're most likely dealing with notifications instead of events. Say for example the above code actually makes a service request and your application is interested in listening for a custom ServiceRequest.SUCCESS notification rather than an Event.COMPLETE. This can be achieved by creating a proxy which wraps the Pure MVC notification system so it can be used with the addAsync call built into Flex Unit. The above code becomes (ServiceRequest is a dummy class):</p>
+
+<div class="highlight"><pre><code class="actionscript"><span class="k">var</span> <span class="nx">req</span><span class="o">:</span><span class="nx">ServiceRequest</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">ServiceRequest</span><span class="p">();</span> 
+<span class="c1">// this class is like URLLoader but sends a ServiceRequest.SUCCESS </span>
+<span class="c1">// notification when the service call is complete</span>
+<span class="nx">registerObserver</span><span class="p">(</span><span class="nx">ServiceRequest</span><span class="p">.</span><span class="nx">SUCCESS</span><span class="o">,</span> <span class="nx">requestCompleteHandler</span><span class="o">,</span> <span class="mi">5000</span><span class="p">);</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="k">new</span> <span class="nb">URLRequest</span><span class="p">(</span><span class="s2">&quot;http://timrobles.com&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+
+<p>The function "registerObserver" is a protected method of a NotificationTestCase class which does the wrapping for us. The original solution was posted here: <a href="http://code.google.com/p/puremvc-flexunit-testing/">http://code.google.com/p/puremvc-flexunit-testing/</a> where you can download the source and see more examples. I have my own modified version of those classes, which includes a few helper methods like "removeObserver" and "removeAllObservers" so you can do some additional cleanup to ensure that your test cases run in isolation. You can grab the source for those here: <a href="http://github.com/roblocop/trdotcom/tree/master/tests/puremvc">http://github.com/roblocop/trdotcom/tree/master/tests/puremvc</a>.</p>
+
+  </div>
+  
+  <div id="related">
+      <h2>Related Posts</h2>
+      <ul class="posts">
+        
+            <li><a href="/2010/02/10/and-now-jekyll.html">And Now Jekyll</a> <span class="post-list-date">/ 2010 Feb 10</span></li>
+        
+            <li><a href="/2009/10/09/smart-buffering-for-progressive-video.html">Smart Buffering For Progressive Video</a> <span class="post-list-date">/ 2009 Oct 09</span></li>
+        
+            <li><a href="/2009/03/24/generating-eclipse-themes-and-sharing-configs.html">Generating Eclipse Themes and Sharing Configs</a> <span class="post-list-date">/ 2009 Mar 24</span></li>
+        
+      </ul>
+    </div>
+
+    <script type="text/javascript" charset="utf-8">
+        if (window.location.href.indexOf('localhost') != -1 ||
+            window.location.href.indexOf('file') != -1)
+        {
+          var disqus_developer = 1;
+        }
+        
+          var disqus_url = "http://timrobles.com/blog/entry/asynchronous_unit_testing_with_flex_unit_and_pure_mvc/";
+        
+    </script>
+
+    <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/timwah/embed.js"></script><noscript><a href="http://disqus.com/forums/timwah/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+  <script type="text/javascript">
+  //<![CDATA[
+  (function() {
+   var links = document.getElementsByTagName('a');
+   var query = '?';
+   for(var i = 0; i < links.length; i++) {
+   if(links[i].href.indexOf('#disqus_thread') >= 0) {
+     query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+   }
+   }
+   document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/timwah/get_num_replies.js' + query + '"></' + 'script>');
+  })();
+  //]]>
+  </script>
+      <div id="ad-container">
+        <script type="text/javascript"><!--
+        google_ad_client = "pub-0544704656740409";
+        /* ee blog */
+        google_ad_slot = "3105365837";
+        google_ad_width = 900;
+        google_ad_height = 15;
+        //-->
+        </script>
+        <script type="text/javascript"
+        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+      </div>
+    </div>
+    
+    <div id="main-sidebar">
+      <h2><a href="/index.html">Timwah 2.0</a></h2>
+      <ul id="sidebar-menu">
+        <li><a href="/about.html">About</a></li>
+        <li><a href="http://github.com/roblocop/">Github</a></li>
+        <li><a href="http://www.linkedin.com/in/timrobles">LinkedIn</a></li>
+      </ul>
+      <h2>Friends</h2>      
+      <ul id="sidebar-menu">
+        <li><a href="http://anttikupila.com">Antti Kupila</a></li>
+        <li><a href="http://petercole.com">Peter Cole</a></li>
+        <li><a href="http://bigevilempire.com">Ronnie Liew</a></li>        
+        <li><a href="http://toreholmberg.se">Tore Holmberg</a></li>
+      </ul>
+    </div>
+    
+  </div>
+</body>
+</html>

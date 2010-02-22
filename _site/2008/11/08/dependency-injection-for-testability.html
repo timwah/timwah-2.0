@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Dependency Injection For Testability | Timwah 2.0</title>
+    <link rel="stylesheet" href="/css/timwah_main.css" type="text/css" media="screen" charset="utf-8">  
+    <link rel="stylesheet" href="/css/pygments_style.css" type="text/css" media="screen" charset="utf-8">
+    <script type="text/javascript" src="http://use.typekit.com/rye8uvw.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  </head>
+<body>
+  <div id="main-container">
+    
+    <div id="main-content">
+          <span class="post-title">Dependency Injection For Testability</span> <span class="post-date">/ 2008 Nov 08</span>
+  <div class="post-content">
+    <p>My latest venture in improving my code has been incorporating the concept of <span class="autolink">Dependency Injection</span>. In general, the overarching idea has to do with the <span class="autolink">the law of demeter</span>. That is, the objects of my application should only collaborate or call actions on objects they use directly. For example, rather than passing a reference to a "service locator" or more commonly a shell or application class in Actionscript:</p>
+
+<div class="highlight"><pre><code class="actionscript"><span class="kd">protected</span> <span class="k">var</span> <span class="nx">loader</span><span class="o">:</span><span class="nx">ILoader</span><span class="o">;</span>
+<span class="nx">LoadedSWF</span><span class="p">(</span><span class="nx">app</span><span class="o">:</span><span class="nx">IApp</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">loader</span> <span class="o">=</span> <span class="nx">app</span><span class="p">.</span><span class="nx">getLoader</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+
+<p>I would say something like this instead:</p>
+
+<div class="highlight"><pre><code class="actionscript"><span class="kd">protected</span> <span class="k">var</span> <span class="nx">loader</span><span class="o">:</span><span class="nx">ILoader</span><span class="o">;</span>
+<span class="nx">LoadedSWF</span><span class="p">(</span><span class="nx">loader</span><span class="o">:</span><span class="nx">ILoader</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">loader</span> <span class="o">=</span> <span class="nx">loader</span><span class="o">;</span>
+    <span class="p">...</span>
+    <span class="p">(</span><span class="nx">maybe</span> <span class="nx">queue</span> <span class="nx">up</span> <span class="nx">some</span> <span class="nx">thumbnails</span> <span class="nx">at</span> <span class="k">this</span> <span class="nx">point</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+
+<p>The end goal is to have an object which only requires it's collaborators.  There's no reason for this loaded swf to know about the app at large; suppose we want to drop it into another application context that simply isn't built within our "app framework?"</p>
+
+<p><span class="autolink">Miško Hevery</span>
+recently gave a talk on this, which I've linked here at the end of the post. Some great points to note:</p>
+
+<ul>
+<li>Object instantiation should be abstracted to factories to wire up your application. You can group factory logic together based on what the object lifetimes are of what they create. You might create a factory for compile time objects, runtime (usually loaded swfs) or service lifetime. With each case you only want to inject an object in the constructor that has a lifetime greater than or equal to the injectee.</li>
+<li>One of the best examples given is when you're purchasing something, do you give the clerk your wallet or the cash? In the same way, you should give your objects what they need directly instead of massaging data.</li></li>
+</ul>
+
+
+<p>Here are the tubes:</p>
+
+<p><object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/RlfLCWKxHJ0&amp;hl=en&amp;fs=1&amp;rel=0&amp;color1=0x3a3a3a&amp;color2=0x999999"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/RlfLCWKxHJ0&amp;hl=en&amp;fs=1&amp;rel=0&amp;color1=0x3a3a3a&amp;color2=0x999999" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object></p>
+
+<p>I'll be posting more on this topic later as it relates specifically to Actionscript.</p>
+
+  </div>
+  
+  <div id="related">
+      <h2>Related Posts</h2>
+      <ul class="posts">
+        
+            <li><a href="/2010/02/10/and-now-jekyll.html">And Now Jekyll</a> <span class="post-list-date">/ 2010 Feb 10</span></li>
+        
+            <li><a href="/2009/10/09/smart-buffering-for-progressive-video.html">Smart Buffering For Progressive Video</a> <span class="post-list-date">/ 2009 Oct 09</span></li>
+        
+            <li><a href="/2009/03/24/generating-eclipse-themes-and-sharing-configs.html">Generating Eclipse Themes and Sharing Configs</a> <span class="post-list-date">/ 2009 Mar 24</span></li>
+        
+      </ul>
+    </div>
+
+    <script type="text/javascript" charset="utf-8">
+        if (window.location.href.indexOf('localhost') != -1 ||
+            window.location.href.indexOf('file') != -1)
+        {
+          var disqus_developer = 1;
+        }
+        
+          var disqus_url = "http://timrobles.com/blog/entry/dependency_injection_for_testability/";
+        
+    </script>
+
+    <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/timwah/embed.js"></script><noscript><a href="http://disqus.com/forums/timwah/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+  <script type="text/javascript">
+  //<![CDATA[
+  (function() {
+   var links = document.getElementsByTagName('a');
+   var query = '?';
+   for(var i = 0; i < links.length; i++) {
+   if(links[i].href.indexOf('#disqus_thread') >= 0) {
+     query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+   }
+   }
+   document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/timwah/get_num_replies.js' + query + '"></' + 'script>');
+  })();
+  //]]>
+  </script>
+      <div id="ad-container">
+        <script type="text/javascript"><!--
+        google_ad_client = "pub-0544704656740409";
+        /* ee blog */
+        google_ad_slot = "3105365837";
+        google_ad_width = 900;
+        google_ad_height = 15;
+        //-->
+        </script>
+        <script type="text/javascript"
+        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+      </div>
+    </div>
+    
+    <div id="main-sidebar">
+      <h2><a href="/index.html">Timwah 2.0</a></h2>
+      <ul id="sidebar-menu">
+        <li><a href="/about.html">About</a></li>
+        <li><a href="http://github.com/roblocop/">Github</a></li>
+        <li><a href="http://www.linkedin.com/in/timrobles">LinkedIn</a></li>
+      </ul>
+      <h2>Friends</h2>      
+      <ul id="sidebar-menu">
+        <li><a href="http://anttikupila.com">Antti Kupila</a></li>
+        <li><a href="http://petercole.com">Peter Cole</a></li>
+        <li><a href="http://bigevilempire.com">Ronnie Liew</a></li>        
+        <li><a href="http://toreholmberg.se">Tore Holmberg</a></li>
+      </ul>
+    </div>
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+---
+layout: post
+---
+
+And here's the new look. It's obviously not complete yet, but I just wanted to get something up to replace the standard template and to have something to call my own. There are still a few kinks to work out to get it to validate, but it does boast some nifty features. 
+
+The color template for this page is generated using <span class="autolink">Adobe Kuler</span>. I randomly select a word out of the set ["zen", "ocean", "mist", "pea", "grasshopper", "kiwi"], then organize the colors from lightest to darkest so I can assign them dynamically to different CSS classes defined like ["lightest", "light", "mid", "dark", "darkest"]. If the colors are hideous or unreadble, just reload the page. I'm working on some color normalizations that will increase the contrast between the colors if the difference is below a certain threshold, ie, text on a colored background becoming unreadable. 
+
+Another cool feature is auto-linking. Since I'm a programmer, I'm naturally lazy by trade, and I don't want to find the URL of whatever I want to link to since Google can do it better. So instead of finding the Wikipedia article to "Test driven development", I can just say something like this:
+{% highlight html %}
+<span class="autolink">Test driven development</span>
+{% endhighlight %}
+This will trigger some javascript to automatically grab the first result from Google and then link it within my page. I'm planning on adding some additional features to inject additional kewords w/o effecting the link label, i.e., adding the word "wiki" to the end of the query w/o the resulting link having "wiki" in the label.
+
+If you follow the development of this blog, I'll be posting the source as I go along-- but for the eager I'd just sniff the traffic to check out any of my JS files :).
